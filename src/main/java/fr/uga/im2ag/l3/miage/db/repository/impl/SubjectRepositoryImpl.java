@@ -27,8 +27,9 @@ public class SubjectRepositoryImpl extends BaseRepositoryImpl implements Subject
 
     @Override
     public Subject findById(Long id) {
-        // TODO
-        return null;
+        Subject sujet = null;
+        sujet = (Subject) entityManager.createNativeQuery("select * from Subject where id = " + id, Subject.class).getSingleResult();
+        return sujet;
     }
 
     @Override

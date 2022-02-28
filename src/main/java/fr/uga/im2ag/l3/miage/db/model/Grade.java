@@ -1,11 +1,13 @@
 package fr.uga.im2ag.l3.miage.db.model;
 
 import javax.persistence.Column;
+import javax.persistence.OneToOne;
 
 // TODO ajouter une named query pour une des requêtes à faire dans le repository
 public class Grade {
 
     private Long id;
+    @OneToOne
     private Subject subject;
     @Column(name = "grade")
     private Float value;
