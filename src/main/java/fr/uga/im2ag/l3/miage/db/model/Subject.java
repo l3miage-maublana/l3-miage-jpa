@@ -1,5 +1,6 @@
 package fr.uga.im2ag.l3.miage.db.model;
 
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 
-// TODO ajouter une named query pour une des requêtes à faire dans le repository
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = "name")})
 @NamedQueries(
