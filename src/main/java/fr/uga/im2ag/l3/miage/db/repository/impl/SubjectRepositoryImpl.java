@@ -34,8 +34,7 @@ public class SubjectRepositoryImpl extends BaseRepositoryImpl implements Subject
 
     @Override
     public List<Subject> getAll() {
-        // TODO
-        return null;
+        return entityManager.createNamedQuery("get-all-subjects", Subject.class).getResultList();
     }
 
     @Override

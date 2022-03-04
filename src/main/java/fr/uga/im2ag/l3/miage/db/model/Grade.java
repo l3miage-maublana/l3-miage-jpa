@@ -3,23 +3,29 @@ package fr.uga.im2ag.l3.miage.db.model;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames = "id")})
 @NamedQueries(
     @NamedQuery(name="get-all-grades", query = "select g from Grade g")
 )
 public class Grade {
 
+    @Id
+    @GeneratedValue
     private Long id;
+
     @OneToOne
     private Subject subject;
+
     @Column(name = "grade")
     private Float value;
+    
     private Float weight;
 
     public Long getId() {

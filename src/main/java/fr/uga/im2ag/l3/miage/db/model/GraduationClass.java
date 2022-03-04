@@ -3,12 +3,28 @@ package fr.uga.im2ag.l3.miage.db.model;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO ajouter une named query pour une des requêtes à faire dans le repository
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+@Entity
+@NamedQueries(
+    @NamedQuery(name="get-all-graduationclass", query = "select gc from GraduationClass gc")
+)
 public class GraduationClass {
 
+    @Id
+    @GeneratedValue
     private Long id;
+
     private String name;
+    
     private Integer year;
+
+    @OneToMany
     private List<Student> students;
 
     public Long getId() {
