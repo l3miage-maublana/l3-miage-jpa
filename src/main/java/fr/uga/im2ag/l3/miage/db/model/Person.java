@@ -2,9 +2,17 @@ package fr.uga.im2ag.l3.miage.db.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public abstract class Person {
 
+    @Id
+    @GeneratedValue
     private Long id;
+
     private Gender gender;
     private String firstName;
     private String lastName;

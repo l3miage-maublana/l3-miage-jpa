@@ -50,7 +50,7 @@ public class GradeRepositoryImpl extends BaseRepositoryImpl implements GradeRepo
     @Override
     public List<Grade> getAll() {
         List<Grade> grades = null;
-        grades = entityManager.createNativeQuery("select * from Grade", Grade.class).getResultList();
+        grades = entityManager.createNativeQuery("select-all-grades", Grade.class).getResultList();
         return grades;
     }
 }
