@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class GradeTest extends Base {
 
     GradeRepository gradeRepository;
@@ -23,7 +25,19 @@ class GradeTest extends Base {
 
     @Test
     void shouldSaveGrade() {
-        // TODO
+
+        final var subject = Fixtures.createSubject();
+        final var grade = Fixtures.createGrade(subject);
+
+        entityManager.getTransaction().begin();
+        gradeRepository.save(grade);
+        entityManager.getTransaction().commit();
+        entityManager.detach(grade);
+
+        var pGrades = gradeRepository.findHighestGradesBySubject(5, subject);
+        var pGrade = pGrades.get(0);
+        assertThat(pGrade).isNotNull().isNotSameAs(grade);
+        assertThat(pGrade.getSubject()).isEqualTo(subject);
     }
 
     @Test

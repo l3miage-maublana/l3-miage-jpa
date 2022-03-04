@@ -20,14 +20,16 @@ public class GradeRepositoryImpl extends BaseRepositoryImpl implements GradeRepo
 
     @Override
     public List<Grade> findHighestGrades(int limit) {
-        // TODO
-        return null;
+        List<Grade> grades = null;
+        grades = entityManager.createNativeQuery("select * from (select * from Grade order by value DESC) where rownum <=" + limit, Grade.class).getResultList();
+        return grades;
     }
 
     @Override
     public List<Grade> findHighestGradesBySubject(int limit, Subject subject) {
-        // TODO
-        return null;
+        List<Grade> grades = null;
+        grades = entityManager.createNativeQuery("select * from (select * from Grade order by value DESC where subject = '" + subject +"') where rownum <=" + limit, Grade.class).getResultList();
+        return grades;
     }
 
     @Override
@@ -47,7 +49,8 @@ public class GradeRepositoryImpl extends BaseRepositoryImpl implements GradeRepo
 
     @Override
     public List<Grade> getAll() {
-        // TODO
-        return null;
+        List<Grade> grades = null;
+        grades = entityManager.createNativeQuery("select * from Grade", Grade.class).getResultList();
+        return grades;
     }
 }
