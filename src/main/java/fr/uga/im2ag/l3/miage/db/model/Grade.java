@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
 @NamedQueries(
@@ -25,7 +23,7 @@ public class Grade {
 
     @Column(name = "grade")
     private Float value;
-    
+
     private Float weight;
 
     public Long getId() {
